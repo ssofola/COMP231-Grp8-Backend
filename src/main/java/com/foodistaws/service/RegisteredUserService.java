@@ -28,15 +28,18 @@ public class RegisteredUserService {
         return repository.findAll();
     }
 
-    public RegisteredUser update(RegisteredUser newRegisteredUser, String id){
+    public RegisteredUser update(RegisteredUser registeredUser, String id){
         return repository.findById(id)
                 .map(user -> {
-                    user.setFullName(newRegisteredUser.getFullName());
-                    user.setRole(newRegisteredUser.getRole());
+                    user.setFullName(registeredUser.getFullName());
+                    user.setEmail(registeredUser.getEmail());
+                    user.setUserName(registeredUser.getUserName());
+                    user.setPasswd(registeredUser.getPasswd());
+                    user.setRoleID(registeredUser.getRoleID());
                     return repository.save(user);
                 }).orElseGet(() -> {
-                    newRegisteredUser.setUserID(id);
-                    return repository.save(newRegisteredUser);
+                    registeredUser.setUserID(id);
+                    return repository.save(registeredUser);
                 });
     }
 

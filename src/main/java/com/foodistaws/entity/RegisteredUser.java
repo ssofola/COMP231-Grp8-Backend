@@ -2,9 +2,13 @@ package com.foodistaws.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+/**
+ * TODO: Add Bean validation to ensure you only store valid records
+ */
+@Document(collection = "registeredUser")
 @Data
 public class RegisteredUser {
     @Id
@@ -13,5 +17,7 @@ public class RegisteredUser {
     private String email;
     private String userName;
     private String passwd;
+    private String roleID;
+    @Transient
     private Role role;
 }

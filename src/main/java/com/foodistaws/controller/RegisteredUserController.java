@@ -16,7 +16,7 @@ public class RegisteredUserController {
         this.registeredUserService = registeredUserService;
     }
 
-    @PostMapping("/")
+    @PostMapping
     RegisteredUser createRegisteredUser(@RequestBody RegisteredUser newRegisteredUser){
         return registeredUserService.create(newRegisteredUser);
     }
@@ -32,8 +32,8 @@ public class RegisteredUserController {
     }
 
     @PutMapping("/{id}")
-    RegisteredUser updateRegisteredUser(@RequestBody RegisteredUser newRegisteredUser, @PathVariable String id){
-        return registeredUserService.update(newRegisteredUser,id);
+    RegisteredUser updateRegisteredUser(@RequestBody RegisteredUser registeredUser, @PathVariable String id){
+        return registeredUserService.update(registeredUser,id);
     }
 
     @DeleteMapping("/{id}")
